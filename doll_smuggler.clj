@@ -29,7 +29,8 @@
 (declare memoize-calculate-optimal)
 
 (defn calculate-optimal [index mWeight]
-	(println "calling calculate optimal for" index mWeight)
+	;(println "calling calculate optimal for" index mWeight)
+	;if invalid object index, or weight is zero
 	(if (or (< index 0) (= mWeight 0)) 
 		[0[]]
 		
@@ -58,18 +59,31 @@
 )
 (def memoize-calculate-optimal(memoize calculate-optimal))
 
-(defn setup []
-	
-	(println "Enter a max weight.")(flush)
-	(def max-weight (Integer. (read-line)))
-	(println "Weight entered" max-weight)(flush)
-	;(println "shipment:" shipment)
-	(println (calculate-optimal (dec (count shipment)) max-weight))
+
+(defn use-known-data[]
+	(println "using weight" (def max-weight 400))
+	(println "using shipment data" shipment)
 	(let[[totalValue packedItems](calculate-optimal (dec (count shipment)) max-weight) ]
 		(println "packed " (count packedItems) " items including indexes " packedItems " with total value " totalValue)
 		(doseq [doll packedItems] (println (shipment doll)))
 			
 	)
 )
+(defn use-custom-data [] (println "poo"))
 
+(defn setup []
+	(println "do you want to enter your own dataset? (y or n)")
+	(def custom-data (read-line))(flush)
+	(if(= custom-data "y")
+		(use-custom-data )
+		(use-known-data )
+	)
+		
+	;(println "Enter a max weight.")(flush)
+	;(def max-weight (Integer. (read-line)))
+	;(println "Weight entered" max-weight)(flush)
+	;(println "shipment:" shipment)
+	;(println (calculate-optimal (dec (count shipment)) max-weight))
+
+)
 (setup)
