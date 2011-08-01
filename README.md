@@ -6,9 +6,9 @@ Write a program in Clojure that chooses the optimal set of drug-packed porcelain
 My implementation takes a known dataset and applies the algorithm from http://en.wikipedia.org/wiki/Knapsack_problem#0-1_knapsack_problem to solve for the result. The dataset is currently hard-coded into the file, but could be input via a series of prompts eventually.
 
 ###How to run:
-With my system configuration, I simply navigate to the containing folder via terminal prompt and enter the command "<clj doll_smuggler.clj>" to run. You may need to be more verbose and using something like "<java -cp clojure.jar:clojure-contrib-1.2.0.jar clojure.main doll_smuggler.clj>"
+With my system configuration, I simply navigate to the containing folder via terminal prompt and enter the command "clj doll\_smuggler.clj" to run. You may need to be more verbose and using something like "java -cp clojure.jar:clojure-contrib-1.2.0.jar clojure.main doll\_smuggler.clj"
 
 #####Other sources:
-*Getting some basics on Clojure: http://www.moxleystratton.com/article/clojure/for-non-lisp-programmers
-*Understanding the algorithm for solving 0-1 knapsack: http://www.youtube.com/watch?v=Z9sMTFh5AXQ&NR=1
-*Code implementations for solving 0-1: http://rosettacode.org/wiki/Knapsack_problem/0-1
+* Getting some basics on Clojure: http://www.moxleystratton.com/article/clojure/for-non-lisp-programmers
+* Understanding the algorithm for solving 0-1 knapsack: http://www.youtube.com/watch?v=Z9sMTFh5AXQ&NR=1
+* Code implementations for solving 0-1: http://rosettacode.org/wiki/Knapsack_problem/0-1
