@@ -59,31 +59,48 @@
 )
 (def memoize-calculate-optimal(memoize calculate-optimal))
 
+(defn enter-dolls[dolls]
+	(println "Enter the weight of the doll")(flush)
+	
+	
+	(println "do you want to enter another doll? (y or n)")(flush)
+	(if (= (read-line) "y")
+		(conj dolls (enter-dolls[]))
+		[]
+	)
+	
+)
+
 
 (defn use-known-data[]
 	(println "using weight" (def max-weight 400))
 	(println "using shipment data" shipment)
+	(println "")
+	(println "################  RESULTS #################")
+	(println "")
 	(let[[totalValue packedItems](calculate-optimal (dec (count shipment)) max-weight) ]
 		(println "packed " (count packedItems) " items including indexes " packedItems " with total value " totalValue)
 		(doseq [doll packedItems] (println (shipment doll)))
 			
 	)
 )
-(defn use-custom-data [] (println "poo"))
+(defn use-custom-data []
+	(println "######### Custom Data Mode ############")
+	(println "")
+	(println "Enter the carrying capacity (in grams) of today's old lady")(flush)
+	(def max-weight (read-line))
+	(println "----Max weight set to "max-weight "grams---" )
+	(def todays-shipment (enter-dolls {}))
+
+)
 
 (defn setup []
-	(println "do you want to enter your own dataset? (y or n)")
-	(def custom-data (read-line))(flush)
-	(if(= custom-data "y")
-		(use-custom-data )
+	;(println "do you want to enter your own dataset? (y or n)")
+	;(def custom-data (read-line))(flush)
+	;(if(= custom-data "y")
+	;	(use-custom-data )
 		(use-known-data )
-	)
-		
-	;(println "Enter a max weight.")(flush)
-	;(def max-weight (Integer. (read-line)))
-	;(println "Weight entered" max-weight)(flush)
-	;(println "shipment:" shipment)
-	;(println (calculate-optimal (dec (count shipment)) max-weight))
+	;)
 
 )
 (setup)
